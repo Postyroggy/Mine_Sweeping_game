@@ -11,5 +11,6 @@ npm run packager
 此时会在Mine_Sweeping_game目录生产四个文件夹  
 对应linux和windwos的;  
 但是不能打包成MacOS下的.  
+打包成功的应用加入应用图标的命令:--icon=my_icon.ico  
 现在只是写好了,后续再来补充js  
 author: "郭跃琪"
