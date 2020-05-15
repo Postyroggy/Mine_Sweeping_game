@@ -1,0 +1,167 @@
+html {
+  background-color: #D8BFD8;
+}
+
+body {
+  user-select: none;
+  background-color: #ffffe9;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Biaodian Pro Sans GB', 'Microsoft YaHei', "Noto Sans CJK TC", "Noto Sans CJK SC", 'Helvetica Neue', Helvetica, Arial, 'Han Heiti GB', sans-serif;
+}
+
+#box {
+  /* 游戏核心区域 */
+  position: relative;
+  margin: 0 auto;
+  width: 408px;
+  height: 408px;
+  overflow: hidden;
+  background-color: #ddd;
+  border: 4px solid #00FFFF;
+}
+
+#box .cell {
+  transition: all .3s ease;
+  /*position: absolute;*/
+  display: inline-block;
+  /*margin-bottom: -5px;*/
+  width: 40px;
+  height: 40px;
+  border: 1px solid #00FFFF;
+  background-color: #008B8B;
+  color: #008B8B;
+  font-size: 30px;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+
+#box .cell:hover {
+  color: #006400;
+  background-color: #FFCC99;
+}
+
+#box .cell.open {
+  background-color: #ddd;
+}
+
+#box .cell.open:hover {
+  color: #008B8B;
+  background-color: #ddd;
+}
+
+#box .cell.boom,
+#box .cell.boom:hover {
+  color: #999999;
+  background-color: #CC0033;
+}
+
+#box.mibble {
+  width: 408px;
+  height: 408px;
+}
+
+#box.mibble .cell {
+  width: 25px;
+  height: 25px;
+  font-size: 19px;
+}
+
+#time {
+  transition: all .8s ease;
+  display: inline-block;
+  margin-left: 16px;
+  height: 40px;
+  width: 0;
+  font-size: 26px;
+  color: #888;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#time.start {
+  width: 150px;
+}
+
+.popup {
+  display: none;
+}
+
+.custom .popup {
+  display: block;
+}
+
+[class^="hvr-"] {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* height: 30px; */
+  width: 140px;
+  text-align: center;
+  cursor: pointer;
+  background: #778899;
+  text-decoration: none;
+  color: #FF4500;
+  -webkit-tap-highlight-color: transparent;
+  /* 改! */
+}
+
+[class^="hvr-"]:hover {
+  text-decoration: none;
+  color: #CC0033;
+  /* font-size: larger; */
+}
+
+.short {
+  width: 80px;
+}
+
+.hvr-bounce-to-right {
+  transform: translateY(0);
+  box-shadow: 0 0 1px transparent;
+  backface-visibility: hidden;
+  position: relative;
+  transition-property: color;
+  transition-duration: 0.6s;
+}
+
+.hvr-bounce-to-right:before {
+  position: absolute;
+  left: 0;
+  right: 0;
+  content: "";
+  bottom: 0;
+  top: 0;
+  background: #008B8B;
+  transform: scaleY(0);
+  transform-origin: 0 50%;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+  z-index: -1;
+}
+
+.hvr-bounce-to-right:hover,
+.hvr-bounce-to-right:focus,
+.hvr-bounce-to-right:active {
+  color: grey;
+}
+
+.hvr-bounce-to-right:hover:before,
+.hvr-bounce-to-right:focus:before,
+.hvr-bounce-to-right:active:before {
+  transform: scaleY(1);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  /* 动画曲线函数(网上引用) */
+}

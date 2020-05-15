@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="Mine_Sweeping_Based_on_electron">
+	<meta name="author" content="GYQ">
+	<meta name="viewport"
+		content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="css/animate.min.css"> -->
+	<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/animate.css/4.1.0/animate.compat.min.css">
+	<link rel="stylesheet" href="css/avgrund.css">
+	<link rel="stylesheet" href="css/app.css">
+	<script>
+		if (typeof module === 'object') { /* 由于electron对Jquery的支持不友好,此时放置Web环境中jquery失效 */
+			window.module = module;
+			module = undefined;
+		}
+	</script>
+
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.avgrund.min.js"></script>
+	<script src="js/app.js"></script>
+
+
+	<script>
+		if (window.module) module = window.module;
+	</script>
+	<title>Mine_Sweeping_Game</title>
+</head>
+
+<body>
+
+	<br />
+	<div class="text-center">
+		<!-- 状态栏 -->
+		<a id="start" href="javascript:;" class="hvr-bounce-to-right">开始游戏</a>
+		<a id="setting" href="javascript:;" class="hvr-bounce-to-right short">简单</a>
+		<span id="time">时间：0</span>
+		<a id="test" href="javascript:;" class="hvr-bounce-to-right" style="display:none">弹窗</a>
+	</div>
+
+	<br />
+	<div id="box">
+		<!-- 游戏核心区域 -->
+	</div>
+
+	<div class="popup">
+		<br />
+		<h2 class="text-center"></h2>
+	</div>
+
+	<div class="sound">
+		<!-- 游戏音效 -->
+	</div>
+</body>
+
+</html>

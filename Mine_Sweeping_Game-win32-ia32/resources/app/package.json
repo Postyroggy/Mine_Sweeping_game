@@ -1,0 +1,22 @@
+{
+  "name": "sweep",
+  "version": "0.33.9",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "packager": "electron-packager ./ Mine_Sweeping_Game --all --arch=x64 --electron-version=1.4.13 --out=./ --overwrite --icon=my_icon.ico"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron-packager": "^7.6.0",
+    "electron-prebuilt": "^1.2.0"
+  }
+}
