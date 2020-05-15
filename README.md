@@ -13,4 +13,5 @@ npm run packager
 但是不能打包成MacOS下的.  
 打包成功的应用加入应用图标的命令:--icon=my_icon.ico  
 现在只是写好了,后续再来补充js  
+对了通过阅读main.js聪明的你可能已经发现了Ctrl+Alt+C即可打开作弊模式
 author: "郭跃琪"
