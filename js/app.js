@@ -111,7 +111,7 @@ $(function () {
           return
         }
         let html = $(this).html()
-        if (html == "○") {
+        if (html == "O") {
           $(this).html("🚩").css({
             color: "#666"
           })
