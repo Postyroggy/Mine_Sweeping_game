@@ -14,12 +14,7 @@ html, body {
 	top: 50%;
 	left: 50%;
 	z-index: 1000;
-	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .5);
-
-	-webkit-transform: scale(0.8);
-	-moz-transform: scale(0.8);
-	-ms-transform: scale(0.8);
-	-o-transform: scale(0.8);
+	box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .5); 
 	transform: scale(0.8);
 }
 
@@ -37,25 +32,12 @@ html, body {
 
 body.avgrund-ready,
 .avgrund-ready .avgrund-popin,
-.avgrund-ready .avgrund-overlay {
-	-webkit-transform-origin: 50% 50%;
-	-moz-transform-origin: 50% 50%;
-	-ms-transform-origin: 50% 50%;
-	-o-transform-origin: 50% 50%;
-	transform-origin: 50% 50%;
-
-	-webkit-transition: 0.3s all ease-out;
-	-moz-transition: 0.3s all ease-out;
-	-ms-transition: 0.3s all ease-out;
-	-o-transition: 0.3s all ease-out;
+.avgrund-ready .avgrund-overlay { 
+	transform-origin: 50% 50%; 
 	transition: 0.3s all ease-out;
 }
 
-body.avgrund-active {
-	-webkit-transform: scale(0.9);
-	-moz-transform: scale(0.9);
-	-ms-transform: scale(0.9);
-	-o-transform: scale(0.9);
+body.avgrund-active { 
 	transform: scale(0.9);
 	overflow: hidden;
 }
@@ -63,12 +45,7 @@ body.avgrund-active {
 .avgrund-active .avgrund-popin {
 	visibility: visible;
 	opacity: 1;
-	filter: alpha(opacity=100);
-
-	-webkit-transform: scale(1.1);
-	-moz-transform: scale(1.1);
-	-ms-transform: scale(1.1);
-	-o-transform: scale(1.1);
+	filter: alpha(opacity=100); 
 	transform: scale(1.1);
 }
 
@@ -79,31 +56,19 @@ body.avgrund-active {
 	height: 20000px;
 }
 
-.avgrund-popin.stack {
-	-webkit-transform: scale(1.5);
-	-moz-transform: scale(1.5);
-	-ms-transform: scale(1.5);
-	-o-transform: scale(1.5);
+.avgrund-popin.stack { 
 	transform: scale(1.5);
 }
 
-.avgrund-active .avgrund-popin.stack {
-	-webkit-transform: scale(1.1);
-	-moz-transform: scale(1.1);
-	-ms-transform: scale(1.1);
-	-o-transform: scale(1.1);
+.avgrund-active .avgrund-popin.stack { 
 	transform: scale(1.1);
 }
 
-.avgrund-active .avgrund-blur {
-	-webkit-filter: blur(1px);
-	-moz-filter: blur(1px);
-	-ms-filter: blur(1px);
-	-o-filter: blur(1px);
+.avgrund-active .avgrund-blur { 
 	filter: blur(1px);
 }
 
-/* Optional close button styles */
+/* 按钮 */
 .avgrund-close {
 	display: block;
 	color: #555;
