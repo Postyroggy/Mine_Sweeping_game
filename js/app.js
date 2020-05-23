@@ -6,7 +6,7 @@ let mineNum = [12, 40] //炸弹的数量10*10==>12个(12.000%)|16*16==>40个(15.
 let level = 0 //初始难度(简单)
 let time = 0 //初始计时0
 let boom = [] //存储炸弹的数组
-let game_status = false //游戏开始
+let game_status = false //游戏开始状态
 
 let color = ["", "#99CCFF", "#CCCC33", "#0099CC", "#3366CC", "#336699", "#336666", "#336666", "#336666"]
 
@@ -36,7 +36,6 @@ let toggleDemo = function (status_switch) {
 }
 
 ipc.on('toggleDemo', function (event, message) {
-  // console.log(message);
   toggleDemo(message)
 });
 //作弊器结束
@@ -46,16 +45,17 @@ ipc.on('toggleDemo', function (event, message) {
 $(function () {
   let box = $("#box")
   let timeElem = $("#time")
-  timer = {}                    //空object
-  let initailze = function () { //初始化数据;
-    game_status = false
+  timer = {} //游戏没有点开始时,不显示游戏时间
+  let initialize = function () { //初始化数据;
+    game_status = false //false代表游戏开始
     box.html("")
     boom = []
     time = 0
 
     /* console.log(level); // 打印难度等级 */
 
-    if (level == 1) {  /* 切换难度等级(css)*/
+    if (level == 1) {
+      /* 切换难度等级(css)*/
       box.addClass("mibble")
     } else {
       box.removeClass("mibble")
@@ -64,7 +64,7 @@ $(function () {
     clearInterval(timer) //timer全局变量 (控制计时的)
     timeElem.removeClass("start").html("时间：0") //上述定义timeElem=#time
 
-    buildCell(0, function () {
+    buildCell(0, function () { //放置炸弹
       setTimeout(function () {
         bindClickForCell() //绑定点击事件(函数定义在下面)
         for (let i = 0; i < mineNum[level]; i++) {
@@ -79,36 +79,36 @@ $(function () {
       if (my_func && my_func != null) {
         my_func()
       }
-      return
+      return;
     }
 
     let cell = $("<div class='cell' data-index='" + i + "'>O</div>")
-    box.append(cell)
+    box.append(cell) //末尾插入元素,相当于在html中写 div
 
     doAnimate(cell, "zoomIn animated") //动画效果
 
     setTimeout(function () {
       buildCell(++i, my_func)
-    }, 5)
+    }, 0)
   }
 
   let bindClickForCell = function () { //单击事件函数开始
-      box.find(".cell").mousedown(function (any) {
+    box.find(".cell").mousedown(function (any) {
 
       let my_this = $(this)
 
       if (!timeElem.hasClass("start")) {
         timeElem.addClass("start")
         timer = setInterval(function () {
-          time = parseFloat((time + 0.1).toFixed(1))
+          time = parseFloat((time + 0.01).toFixed(2)) //单位 s
           timeElem.html("时间：" + time)
-        }, 100)
+        }, 10) //设置刷新时间单位 ms
       }
 
       if (3 == any.which) {
         //3代表右键
         if (game_status || $(this).hasClass("open")) {
-          return
+          return //从被调函数返回到主调函数继续执行
         }
         let html = $(this).html()
         if (html == "O") {
@@ -137,7 +137,7 @@ $(function () {
   //单击事件函数结束
 
   $("#start").off("click").on("click", function () { //"开始"按钮初始化
-    initailze()
+    initialize()
   })
 
   $("#setting").off("click").on("click", function () { //"简单/困难模式切换"
@@ -148,7 +148,7 @@ $(function () {
       level = 0
       $(this).html("简单模式")
     }
-    initailze() //重置游戏
+    initialize() //重置游戏
   })
 
   let open = function (i) {
@@ -173,13 +173,13 @@ $(function () {
         iterator(i, function (index) {
           open(index)
         })
-      }, 20)
+      }, 0)
     } else {
       cell.html(n).css({
         color: color[n]
       })
     }
-    if ($(".cell:not(.open)").length == mineNum[level]) {
+    if ($(".cell:not(.open)").length == mineNum[level]) {//未被点击cell刚好等于炸弹数量
       win()
     }
   }
@@ -191,19 +191,19 @@ $(function () {
         n++
       }
     })
-    return n
+    return n;
   }
 
   let iterator = function (i, my_func) {
     let x = i % blockNum[level]
     let y = parseInt(i / blockNum[level])
 
-    for (let i = -1; i <= 1; i++) {
+    for (let i = -1; i <= 1; i++) {   //周围的8个方块
       for (let j = -1; j <= 1; j++) {
         let n_x = x + i
         let n_y = y + j
         if (n_x < 0 || n_x > blockNum[level] - 1 || n_y < 0 || n_y > blockNum[level] - 1 || (i == 0 && j == 0)) {
-          continue
+          continue;
         }
         let index = n_y * blockNum[level] + n_x
         my_func(index)
@@ -211,6 +211,7 @@ $(function () {
     }
   }
 
+  
   let isBoom = function (i) { //寻找这个格子是否为炸弹
     if (boom.indexOf(i) > -1) {
       return true
@@ -219,15 +220,15 @@ $(function () {
   }
 
   let lose = function (i) {
-    let index = boom[boom.indexOf(i)]
-    boom.splice(index, 1)
+    let index = boom[boom.indexOf(i)];
+    boom.splice(index, 1);
 
     doBoom(index, function () { //炸弹被点到
-      popup("Lose Game,游戏结束!")
+      popup("Lose Game,游戏结束!");
     })
 
-    clearInterval(timer)
-    game_status = true
+    clearInterval(timer); //清除时间
+    game_status = true;
   }
   let win = function (i) {
     for (let i = 0; i < boom.length; i++) {
@@ -254,7 +255,7 @@ $(function () {
     }
     setTimeout(function () {
       doBoom(boom.pop(), my_func)
-    }, 100)
+    }, 200) //原版扫雷当你点到雷的时候,雷爆炸的声音会越来越来,二这时候只设置了2s的时间间隔
   }
 
   let doAnimate = function (cell, clazz) {
@@ -270,7 +271,6 @@ $(function () {
     setTimeout(function () {
       let audio = $(".sound audio:last")
       audio[0].play()
-
       setTimeout(function () {
         audio.remove()
       }, 1000)
@@ -292,5 +292,5 @@ $(function () {
     $(".popup").find("h2").html(msg)
   }
 
-  initailze()
+  initialize()
 })
