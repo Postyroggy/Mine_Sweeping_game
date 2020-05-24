@@ -1,5 +1,6 @@
 # Mine_Sweeping_game
-CSUST_GYQ: Mine Sweeping based on Electron  
+CSUST_GYQ: Mine Sweeping based on Electron 
+
 打包好的文件太大了,我就没传上来了  
 使用指南:  
 打开git_bash 输入 git clone https://github.com/Postyroggy/Mine_Sweeping_game.git  
@@ -13,7 +14,10 @@ npm run packager
 但是不能打包成MacOS下的.  
 打包成功的应用加入应用图标的命令:--icon=my_icon.ico  
 现在只是写好了,后续再来补充js  
-对了通过阅读main.js聪明的你可能已经发现了Ctrl+Alt+C即可打开作弊模式  
+对了通过阅读main.js聪明的你可能已经发现了Ctrl+Alt+C即可打开作弊模式 
+---
+`2020--5--25更新` 修复小bug右键单击是只能从🚩切换到⭕的bug已修复
+
 
   
   
