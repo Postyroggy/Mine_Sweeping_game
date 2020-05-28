@@ -3,6 +3,7 @@ CSUST_GYQ: Mine Sweeping based on Electron
 
 打包好的文件太大了,我就没传上来了  
 使用指南:  
+>前置技能点:电脑环境配置好(安装npm(自己谷歌))  
 打开git_bash 输入 git clone https://github.com/Postyroggy/Mine_Sweeping_game.git  
 cd Mine_Sweeping_game  
 npm start  
